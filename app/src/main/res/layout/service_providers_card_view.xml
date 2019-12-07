@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="5dp"
+    app:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/business_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="5dp"
+            android:src="@color/cardview_dark_background"
+            android:layout_margin="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/business_logo"
+            android:padding="5dp"
+            android:text="Moovers"
+            android:id="@+id/business_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/business_logo"
+            android:layout_marginTop="24dp"
+            android:padding="5dp"
+            android:text="24 Ikot Ekpene Road"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="italic"
+            android:id="@+id/business_address"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/business_logo"
+            android:padding="5dp"
+            android:text="08182369941"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="italic"
+            android:id="@+id/business_phone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/business_logo"
+            android:layout_marginTop="48dp"
+            android:padding="5dp"
+            android:text="We move you to dream"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="italic"
+            android:id="@+id/business_about"/>
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>
