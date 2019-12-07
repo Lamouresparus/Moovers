@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 public interface Api {
 
     @GET("https://sheetsu.com/apis/v1.0su/e5cc1630393f")
-    Call<List<ServiceProviders>> serviceProviders();
+    Call<List<ServiceProviders>> getServiceProviders();
 
 
 }
