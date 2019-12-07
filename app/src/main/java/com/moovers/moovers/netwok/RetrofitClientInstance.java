@@ -8,7 +8,7 @@ public class RetrofitClientInstance {
 
     private static Retrofit retrofit;
 
-    private static final String BASE_URL = "https://sheetsu.com/apis/v1.0su/e5cc1630393f";
+    private static final String BASE_URL = "https://sheetsu.com/apis/v1.0su/e5cc1630393f/";
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
