@@ -134,7 +134,7 @@ public class ServiceProvidersAdapter extends RecyclerView.Adapter<ServiceProvide
 
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_CALL);
-                    intent.setData(Uri.parse("tel:"+serviceProviders.getmPhone()));
+                    intent.setData(Uri.parse("tel:" + "0" + serviceProviders.getmPhone()));
                     mContext.startActivity(intent);
                 }
             });
@@ -147,13 +147,12 @@ public class ServiceProvidersAdapter extends RecyclerView.Adapter<ServiceProvide
                     ServiceProviders serviceProviders = mServiceProviders.get(i);
 
                     Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("*/*");
-                    intent.putExtra(Intent.EXTRA_EMAIL, serviceProviders.getmEmail());
-                    intent.putExtra(Intent.EXTRA_SUBJECT, "");
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{ serviceProviders.getmEmail()});
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Home Service Request");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Hello, I would love to have your service.");
+                    intent.setType("message/rfc822");
+                    mContext.startActivity(Intent.createChooser(intent, "Choose an Email client :"));
 
-                    if (intent.resolveActivity(mContext.getPackageManager()) != null) {
-                        mContext.startActivity(intent);
-                    }
                 }
             });
         }
