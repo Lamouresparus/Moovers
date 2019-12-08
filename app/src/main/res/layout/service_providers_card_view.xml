@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     android:layout_margin="5dp"
@@ -15,55 +15,96 @@
             android:id="@+id/business_logo"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:padding="5dp"
+            android:scaleType="centerCrop"
             android:src="@color/cardview_dark_background"
             android:layout_margin="16dp"/>
 
         <TextView
+            android:textColor="@color/colorPrimary"
+
+            android:layout_toRightOf="@id/business_logo"
+            android:id="@+id/business_name"
+            android:layout_alignTop="@id/business_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignBottom="@id/business_logo"
             android:padding="5dp"
             android:text="Moovers"
-            android:id="@+id/business_name"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="italic" />
+            android:textStyle="italic|bold" />
 
         <TextView
             android:layout_width="wrap_content"
+            android:layout_below="@id/business_about"
+            android:layout_toRightOf="@id/business_logo"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/business_logo"
-            android:layout_marginTop="24dp"
             android:padding="5dp"
             android:text="24 Ikot Ekpene Road"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textStyle="italic"
             android:id="@+id/business_address"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/business_logo"
-            android:padding="5dp"
-            android:text="08182369941"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="italic"
-            android:id="@+id/business_phone"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/business_logo"
+            android:layout_width="match_parent"
+            android:layout_below="@id/business_name"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/business_logo"
-            android:layout_marginTop="48dp"
             android:padding="5dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:text="We move you to dream"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textStyle="italic"
             android:id="@+id/business_about"/>
+
+        <LinearLayout
+            android:id="@+id/layout_phone"
+            android:layout_below="@id/business_address"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@id/business_logo"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:tint="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_call"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="08182369941"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="italic"
+                android:id="@+id/business_phone"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_email"
+            android:layout_below="@id/layout_phone"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@id/business_logo"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:tint="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_email"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:padding="5dp"
+                android:text="loveotudor@gmail.com"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="italic"
+                android:id="@+id/business_email"/>
+        </LinearLayout>
 
     </RelativeLayout>
 

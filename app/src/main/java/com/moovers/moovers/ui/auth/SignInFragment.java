@@ -1,6 +1,8 @@
 package com.moovers.moovers.ui.auth;
 
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.moovers.moovers.R;
+import com.moovers.moovers.ui.category.CategoryActivity;
 
 import static android.content.ContentValues.TAG;
 
@@ -29,6 +32,7 @@ import static android.content.ContentValues.TAG;
 public class SignInFragment extends Fragment {
 
     FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
 
 
     public SignInFragment() {
@@ -49,6 +53,10 @@ public class SignInFragment extends Fragment {
 
         mAuth =FirebaseAuth.getInstance();
 
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+
         Button signinButton = view.findViewById(R.id.signin_button);
         final EditText emailEditText = view.findViewById(R.id.email);
         final EditText passwordEditText = view.findViewById(R.id.password);
@@ -65,7 +73,11 @@ public class SignInFragment extends Fragment {
                     return;
                 }
 
+                progressDialog.show();
+
                 signIn(email, password);
+
+
             }
         });
     }
@@ -75,10 +87,13 @@ public class SignInFragment extends Fragment {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
                         if(task.isSuccessful()){
                             Log.d(TAG, "Sign In with Email Sucessful!");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getContext(), "Welcome back "+user.getEmail()+"!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getContext(), CategoryActivity.class);
+                            startActivity(intent);
                         }
                         else {
                             Log.w(TAG, "Sign In with Email failed!");

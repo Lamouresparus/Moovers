@@ -5,28 +5,47 @@
     android:layout_height="wrap_content"
     tools:context=".ui.auth.SignInFragment"
     android:orientation="vertical"
-    android:layout_margin="80dp">
+
+    android:background="@color/colorPrimary">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text="Email Address"
+        android:layout_marginTop="40dp"/>
+
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@android:color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="EMAIL"/>
+        android:textColor="@android:color/white"
+        android:text="Password"
+        android:layout_marginTop="40dp"/>
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="PASSWORD"/>
+        android:layout_height="32dp"
+        android:background="@android:color/white"
+        android:layout_marginBottom="60dp"/>
 
     <Button
         android:id="@+id/signin_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="signin"
-        android:layout_gravity="center_horizontal"/>
+        android:text="Sign in"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/colorAccent"/>
 
 
 </LinearLayout>

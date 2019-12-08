@@ -4,46 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="80dp"
+    android:background="@color/colorPrimary"
     tools:context=".ui.auth.SignUpFragment">
 
-    <EditText
-        android:id="@+id/first_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="FIRST NAME"/>
 
-    <EditText
-        android:id="@+id/last_name"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="LAST NAME"/>
+        android:textColor="@android:color/white"
+        android:text="Email Address"
+        android:layout_marginTop="40dp"/>
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@android:color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="EMAIL"/>
+        android:textColor="@android:color/white"
+        android:text="Password"
+        android:layout_marginTop="40dp"/>
+
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@android:color/white"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="PASSWORD"/>
+        android:textColor="@android:color/white"
+        android:text="Confirm Password"
+        android:layout_marginTop="40dp"/>
 
     <EditText
         android:id="@+id/confirm_password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="CONFIRM PASSWORD"/>
+        android:layout_height="32dp"
+        android:background="@android:color/white"
+        android:layout_marginBottom="60dp"/>
+
 
     <Button
         android:id="@+id/signup_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="signup"
-        android:layout_gravity="center_horizontal"/>
-
+        android:text="Sign up"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/colorAccent"/>
 
 </LinearLayout>
