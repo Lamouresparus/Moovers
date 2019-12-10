@@ -1,6 +1,7 @@
 package com.moovers.moovers.ui.auth;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,8 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.moovers.moovers.MainActivity;
 import com.moovers.moovers.R;
+import com.moovers.moovers.ui.category.CategoryActivity;
 
 import java.util.Objects;
 
@@ -33,6 +34,8 @@ import static android.content.ContentValues.TAG;
 public class SignUpFragment extends Fragment {
 
     private FirebaseAuth mAuth;
+
+    ProgressDialog progressDialog;
 
 
     public SignUpFragment() {
@@ -53,6 +56,9 @@ public class SignUpFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
 
         Button signUpButton = view.findViewById(R.id.signup_button);
 
@@ -60,15 +66,8 @@ public class SignUpFragment extends Fragment {
 
         final EditText passwordEditText  = view.findViewById(R.id.password);
 
-
         final EditText confirmPasswordEditText  = view.findViewById(R.id.confirm_password);
 
-
-        EditText firstNameEditText  = view.findViewById(R.id.first_name);
-        String firstName = firstNameEditText.getText().toString();
-
-        EditText lastNameEditText  = view.findViewById(R.id.last_name);
-        String lastName = lastNameEditText.getText().toString();
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -96,6 +95,9 @@ public class SignUpFragment extends Fragment {
                     return;
                 }
 
+
+                progressDialog.show();
+
                 signUp(email,password);
 
 
@@ -110,10 +112,14 @@ public class SignUpFragment extends Fragment {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
                         if (task.isSuccessful()){
                             Log.d(TAG, "Create user with email sucessful");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getContext(), "Welcome"+user.getEmail(), Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(getContext(), CategoryActivity.class);
+                            startActivity(intent);
 
                         }else {
                             Toast.makeText(getContext(), Objects.requireNonNull(task.getException()).getLocalizedMessage(), Toast.LENGTH_LONG).show();

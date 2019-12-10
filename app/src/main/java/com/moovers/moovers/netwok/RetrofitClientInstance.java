@@ -1,5 +1,7 @@
 package com.moovers.moovers.netwok;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -12,7 +14,8 @@ public class RetrofitClientInstance {
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
-            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
+                    .callTimeout(30000, TimeUnit.MILLISECONDS);
 
             Retrofit.Builder builder =
                     new Retrofit.Builder()
@@ -28,6 +31,7 @@ public class RetrofitClientInstance {
                             )
                             .build();
         }
+
         return retrofit;
     }
 }
