@@ -71,7 +71,7 @@ public class EditTodoActivity extends AppCompatActivity implements com.wdullaer.
 
     public void init_update() {
         id = intent.getStringExtra("id");
-        TextView toolbar_task_add_title = (TextView) findViewById(R.id.todo_main_toolbar);
+        TextView toolbar_task_add_title = (TextView) findViewById(R.id.toolbar_todo_edit_title);
         EditText task_name = findViewById(R.id.task_name);
         EditText task_date = findViewById(R.id.task_date);
         toolbar_task_add_title.setText("Update");

@@ -30,7 +30,7 @@ public class MainTodoActivity extends AppCompatActivity {
 
     Activity activity;
     TaskDBHelper mydb;
-    NoScrollListView taskListToday, taskListTomorrow, taskListUpcoming;
+    ListView taskListToday, taskListTomorrow, taskListUpcoming;
     NestedScrollView scrollView;
     ProgressBar loader;
     TextView todayText,tomorrowText,upcomingText;
