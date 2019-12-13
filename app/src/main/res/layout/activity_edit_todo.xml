@@ -71,6 +71,20 @@
         android:layout_centerHorizontal="true"
         android:gravity="center">
 
+        <EditText
+            android:id="@+id/task_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:hint="Task"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:ems="10"
+            android:singleLine="true"
+            android:textColorHint="#CCCCCC"
+            android:textColor="#666666"/>
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="2dp"

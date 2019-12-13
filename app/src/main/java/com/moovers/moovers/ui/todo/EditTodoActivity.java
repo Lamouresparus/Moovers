@@ -2,7 +2,6 @@ package com.moovers.moovers.ui.todo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,18 +12,30 @@ import android.widget.Toast;
 
 import com.moovers.moovers.R;
 
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.function.Function;
 
-import io.opencensus.stats.View;
+/**
+ * Created by Ferdousur Rahman Sarker on 3/17/2018.
+ */
 
-public class EditTodoActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class EditTodoActivity extends AppCompatActivity implements com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener {
+
 
     TaskDBHelper mydb;
-    DatePickerDialog dpd;
+    com.wdullaer.materialdatetimepicker.date.DatePickerDialog dpd;
     int startYear = 0, startMonth = 0, startDay = 0;
     String dateFinal;
     String nameFinal;
@@ -55,15 +66,14 @@ public class EditTodoActivity extends AppCompatActivity implements DatePickerDia
         if (isUpdate) {
             init_update();
         }
-
-
     }
+
 
     public void init_update() {
         id = intent.getStringExtra("id");
-        TextView toolbar_task_add_title =  findViewById(R.id.toolbar_todo_edit_title);
-        EditText task_name =  findViewById(R.id.task_name);
-        EditText task_date =  findViewById(R.id.task_date);
+        TextView toolbar_task_add_title = (TextView) findViewById(R.id.todo_main_toolbar);
+        EditText task_name = findViewById(R.id.task_name);
+        EditText task_date = findViewById(R.id.task_date);
         toolbar_task_add_title.setText("Update");
         Cursor task = mydb.getDataSpecific(id);
         if (task != null) {
@@ -96,8 +106,8 @@ public class EditTodoActivity extends AppCompatActivity implements DatePickerDia
 
     public void doneAddTask(View v) {
         int errorStep = 0;
-        EditText task_name =  findViewById(R.id.task_name);
-        EditText task_date =  findViewById(R.id.task_date);
+        EditText task_name = (EditText) findViewById(R.id.task_name);
+        EditText task_date = (EditText) findViewById(R.id.task_date);
         nameFinal = task_name.getText().toString();
         dateFinal = task_date.getText().toString();
 
@@ -134,15 +144,14 @@ public class EditTodoActivity extends AppCompatActivity implements DatePickerDia
     @Override
     public void onResume() {
         super.onResume();
-        dpd = (DatePickerDialog) getSupportFragmentManager().findFragmentByTag("startDatepickerdialog");
+        dpd = (com.wdullaer.materialdatetimepicker.date.DatePickerDialog) getFragmentManager().findFragmentByTag("startDatepickerdialog");
         if (dpd != null) dpd.setOnDateSetListener(this);
     }
 
     @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
+    public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         startYear = year;
-        startMonth = month;
+        startMonth = monthOfYear;
         startDay = dayOfMonth;
         int monthAddOne = startMonth + 1;
         String date = (startDay < 10 ? "0" + startDay : "" + startDay) + "/" +
@@ -150,8 +159,14 @@ public class EditTodoActivity extends AppCompatActivity implements DatePickerDia
                 startYear;
         EditText task_date = (EditText) findViewById(R.id.task_date);
         task_date.setText(date);
-
     }
 
+
+
+    public void showStartDatePicker(View v) {
+        dpd = DatePickerDialog.newInstance(EditTodoActivity.this, startYear, startMonth, startDay);
+        dpd.setOnDateSetListener(this);
+        dpd.show(getFragmentManager(), "startDatepickerdialog");
+    }
 
 }
