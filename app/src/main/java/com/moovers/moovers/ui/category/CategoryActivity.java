@@ -2,17 +2,20 @@ package com.moovers.moovers.ui.category;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.moovers.moovers.Constants;
 import com.moovers.moovers.ServiceProvidersActivity;
 import com.moovers.moovers.R;
 import com.moovers.moovers.model.ServiceCategories;
 import com.moovers.moovers.model.ServicesCategoryAdapter;
 import com.moovers.moovers.ui.CallbackListener;
+import com.moovers.moovers.ui.todo.MainTodoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,7 @@ import java.util.List;
 public class CategoryActivity extends AppCompatActivity  {
     private RecyclerView recyclerView;
     private ServicesCategoryAdapter adapter;
+    private FloatingActionButton todoFab;
     RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -44,6 +48,17 @@ public class CategoryActivity extends AppCompatActivity  {
             }
         });
         recyclerView.setAdapter(adapter);
+
+
+
+        todoFab = findViewById(R.id.fab_todo);
+        todoFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, MainTodoActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 
