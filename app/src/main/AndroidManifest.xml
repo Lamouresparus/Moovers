@@ -7,25 +7,26 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_moovers_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_moovers_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.todo.EditTodoActivity"></activity>
+        <activity android:name=".ui.splash.SplashActivity" android:theme="@style/Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.todo.EditTodoActivity" />
         <activity android:name=".ui.todo.MainTodoActivity" />
         <activity android:name=".ui.category.CategoryActivity" />
         <activity
             android:name=".ui.auth.AuthenticationActivity"
-            android:exported="true" >
-        <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-            <action android:name="android.intent.action.VIEW"/>
-
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
-        </activity>
-        <activity android:name=".ServiceProvidersActivity"/>
+            android:exported="true"/>
+        <activity android:name=".ServiceProvidersActivity" />
     </application>
 
 </manifest>

@@ -21,15 +21,6 @@ public class AuthenticationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (user!=null){
-
-            Intent intent = new Intent(this, CategoryActivity.class);
-            startActivity(intent);
-            finish();
-            return;
-        }
 
 
         ViewPager viewPager = findViewById(R.id.auth_viewpager);
